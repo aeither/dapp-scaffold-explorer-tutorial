@@ -1,5 +1,5 @@
 import { WalletMultiButton } from "@solana/wallet-adapter-ant-design";
-import { Button, Col, Row } from "antd";
+import { Button, Col, Row, Divider } from "antd";
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { TokenIcon } from "../../components/TokenIcon";
@@ -8,6 +8,11 @@ import { useMarkets } from "../../contexts/market";
 import { useUserBalance, useUserTotalBalance } from "../../hooks";
 import { WRAPPED_SOL_MINT } from "../../utils/ids";
 import { formatUSD } from "../../utils/utils";
+
+import PriceCard from "../../components/PriceCard";
+import SupplyCard from "../../components/SupplyCard.tsx";
+import StatsCard from "../../components/StatsCard.tsx";
+import SearchCard from "../../components/SearchCard";
 
 export const HomeView = () => {
   const { marketEmitter, midPriceInUSD } = useMarkets();
@@ -32,16 +37,19 @@ export const HomeView = () => {
   }, [marketEmitter, midPriceInUSD, tokenMap]);
 
   return (
-    <Row gutter={[16, 16]} align="middle">
+    <Row gutter={[16, 16]} align="middle" justify="center">
+      
       <Col span={24}>
-        <h2>Your balances ({formatUSD.format(totalBalanceInUSD)}):</h2>
-        <h2>
-          SOL: {SOL.balance} ({formatUSD.format(SOL.balanceInUSD)})
-        </h2>
-        <h2 style={{ display: "inline-flex", alignItems: "center" }}>
-          <TokenIcon mintAddress={SRM_ADDRESS} /> SRM: {SRM?.balance} (
-          {formatUSD.format(SRM?.balanceInUSD)})
-        </h2>
+        <PriceCard />
+      </Col>
+      <Col span={24}>
+        <SupplyCard />
+      </Col>
+      <Col span={24}>
+        <StatsCard />
+      </Col>
+      <Col span={24}>
+        <SearchCard />
       </Col>
 
       <Col span={12}>

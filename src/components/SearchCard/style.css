@@ -1,0 +1,28 @@
+.submit {
+  background-color: #08d;
+  border-radius: 2px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  cursor: pointer;
+  font-size: 18px;
+  height: 50px;
+  outline: 0;
+  text-align: center;
+}
+
+.submit:active {
+  background-color: #06b;
+}
+
+.input {
+  background-color: #303245;
+  border-radius: 2px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  font-size: 18px;
+  height: 50px;
+  outline: 0;
+  padding: 4px 20px 0;
+}

@@ -1,6 +1,7 @@
 import {
-  Account,
+  // Account,
   AccountInfo,
+  Keypair,
   PublicKey,
   TransactionInstruction,
 } from "@solana/web3.js";
@@ -24,9 +25,9 @@ export function approve(
 
   // if delegate is not passed ephemeral transfer authority is used
   delegate?: PublicKey
-): Account {
+): Keypair {
   const tokenProgram = TOKEN_PROGRAM_ID;
-  const transferAuthority = new Account();
+  const transferAuthority = new Keypair();
 
   instructions.push(
     Token.createApproveInstruction(

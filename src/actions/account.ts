@@ -1,6 +1,6 @@
 import { AccountLayout, MintLayout, Token } from "@solana/spl-token";
 import {
-  Account,
+  Keypair,
   PublicKey,
   SystemProgram,
   TransactionInstruction,
@@ -15,7 +15,7 @@ export function ensureSplAccount(
   toCheck: TokenAccount,
   payer: PublicKey,
   amount: number,
-  signers: Account[]
+  signers: Keypair[]
 ) {
   if (!toCheck.info.isNative) {
     return toCheck.pubkey;
@@ -55,11 +55,11 @@ export const DEFAULT_TEMP_MEM_SPACE = 65548;
 export function createTempMemoryAccount(
   instructions: TransactionInstruction[],
   payer: PublicKey,
-  signers: Account[],
+  signers: Keypair[],
   owner: PublicKey,
   space = DEFAULT_TEMP_MEM_SPACE
 ) {
-  const account = new Account();
+  const account = new Keypair();
   instructions.push(
     SystemProgram.createAccount({
       fromPubkey: payer,
@@ -80,9 +80,9 @@ export function createUninitializedMint(
   instructions: TransactionInstruction[],
   payer: PublicKey,
   amount: number,
-  signers: Account[]
+  signers: Keypair[]
 ) {
-  const account = new Account();
+  const account = new Keypair();
   instructions.push(
     SystemProgram.createAccount({
       fromPubkey: payer,
@@ -102,9 +102,9 @@ export function createUninitializedAccount(
   instructions: TransactionInstruction[],
   payer: PublicKey,
   amount: number,
-  signers: Account[]
+  signers: Keypair[]
 ) {
-  const account = new Account();
+  const account = new Keypair();
   instructions.push(
     SystemProgram.createAccount({
       fromPubkey: payer,
@@ -126,7 +126,7 @@ export function createTokenAccount(
   accountRentExempt: number,
   mint: PublicKey,
   owner: PublicKey,
-  signers: Account[]
+  signers: Keypair[]
 ) {
   const account = createUninitializedAccount(
     instructions,
@@ -150,7 +150,7 @@ export function findOrCreateAccountByMint(
   cleanupInstructions: TransactionInstruction[],
   accountRentExempt: number,
   mint: PublicKey, // use to identify same type
-  signers: Account[],
+  signers: Keypair[],
   excluded?: Set<string>
 ): PublicKey {
   const accountToFind = mint.toBase58();

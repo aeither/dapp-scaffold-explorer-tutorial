@@ -242,3 +242,39 @@ export function convert(
 
   return result;
 }
+
+export function abbreviatedNumber(value: number, fixed = 1) {
+  if (value < 1e3) return value;
+  if (value >= 1e3 && value < 1e6) return +(value / 1e3).toFixed(fixed) + "K";
+  if (value >= 1e6 && value < 1e9) return +(value / 1e6).toFixed(fixed) + "M";
+  if (value >= 1e9 && value < 1e12) return +(value / 1e9).toFixed(fixed) + "B";
+  if (value >= 1e12) return +(value / 1e12).toFixed(fixed) + "T";
+}
+
+export const LAMPORTS_PER_SOL = 1000000000;
+
+export function lamportsToSol(lamports: number): number {
+  return Math.abs(lamports) / LAMPORTS_PER_SOL;
+}
+
+// utils.ts
+export function displayTimestampUtc(
+  unixTimestamp: number,
+  shortTimeZoneName = false
+): string {
+  const expireDate = new Date(unixTimestamp);
+  const dateString = new Intl.DateTimeFormat("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    timeZone: "UTC"
+  }).format(expireDate);
+  const timeString = new Intl.DateTimeFormat("en-US", {
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+    timeZone: "UTC",
+    timeZoneName: shortTimeZoneName ? "short" : "long"
+  }).format(expireDate);
+  return `${dateString} at ${timeString}`;
+}
