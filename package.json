@@ -24,7 +24,7 @@
   "dependencies": {
     "@ant-design/icons": "^4.5.0",
     "@craco/craco": "^5.7.0",
-    "@project-serum/serum": "^0.13.34",
+    "@project-serum/serum": "^0.13.60",
     "@solana/spl-token": "^0.1.6",
     "@solana/spl-token-registry": "^0.2.203",
     "@solana/spl-token-swap": "^0.1.0",
