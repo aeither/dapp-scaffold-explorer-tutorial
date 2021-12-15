@@ -54,7 +54,7 @@
     "@types/bn.js": "^4.11.6",
     "@types/bs58": "^4.0.1",
     "@types/jest": "^24.9.1",
-    "@types/node": "^12.12.62",
+    "@types/node": "^16.11.13",
     "@types/react": "^16.9.50",
     "@types/react-dom": "^16.9.8",
     "arweave-deploy": "^1.9.1",
