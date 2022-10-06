@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3.1.0
       - name: Install Rust nightly
         uses: actions-rs/toolchain@v1
         with:
@@ -39,7 +39,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3.1.0
       - name: Install Linux dependencies
         run: sudo apt-get install -y pkg-config build-essential libudev-dev
       - name: Install Rust nightly
@@ -57,7 +57,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3.1.0
       - name: Cache dependencies
         uses: Swatinem/rust-cache@v1
       - name: Install Linux dependencies
